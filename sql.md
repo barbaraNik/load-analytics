@@ -101,11 +101,11 @@ GROUP BY c.container_type_id;
 ```sql
 SELECT p.name AS product_name,
        COUNT(*) AS cnt
-FROM consolidations      AS c
+FROM consolidations AS c
 JOIN consolidation_orders AS co ON co.consolidation_id = c.consolidation_id
-JOIN orders               AS o  ON o.order_id  = co.order_id
-JOIN order_items          AS oi ON oi.order_id = o.order_id
-JOIN products             AS p  ON p.product_id = oi.product_id
+JOIN orders AS o  ON o.order_id  = co.order_id
+JOIN order_items AS oi ON oi.order_id = o.order_id
+JOIN products AS p  ON p.product_id = oi.product_id
 WHERE c.f_score < 0.51
 GROUP BY p.name
 ORDER BY cnt DESC
